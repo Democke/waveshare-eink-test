@@ -24,17 +24,17 @@
  # THE SOFTWARE.
  ##
 
-import epd2in7
+import epd2in7b
 import Image
 import ImageFont
 import ImageDraw
 
 def main():
-    epd = epd2in7.EPD()
+    epd = epd2in7b.EPD()
     epd.init()
 
     # For simplicity, the arguments are explicit numerical coordinates
-    image = Image.new('1', (epd2in7.EPD_WIDTH, epd2in7.EPD_HEIGHT), 255)    # 255: clear the image with white
+    image = Image.new('1', (epd2in7b.EPD_WIDTH, epd2in7b.EPD_HEIGHT), 255)    # 255: clear the image with white
     draw = ImageDraw.Draw(image)
     font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 18)
     draw.text((20, 50), 'e-Paper demo', font = font, fill = 0)
