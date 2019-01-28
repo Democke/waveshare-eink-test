@@ -34,21 +34,21 @@ def main():
     epd.init()
 
     # For simplicity, the arguments are explicit numerical coordinates
-    image = Image.new('1', (epd2in7b.EPD_WIDTH, epd2in7b.EPD_HEIGHT), 255)    # 255: clear the image with white
-    draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 18)
-    draw.text((20, 50), 'e-Paper demo', font = font, fill = 0)
-    draw.rectangle((0, 76, 176, 96), fill = 0)
-    draw.text((18, 80), 'Hello world!', font = font, fill = 255)
-    draw.line((10, 130, 10, 180), fill = 0)
-    draw.line((10, 130, 50, 130), fill = 0)
-    draw.line((50, 130, 50, 180), fill = 0)
-    draw.line((10, 180, 50, 180), fill = 0)
-    draw.line((10, 130, 50, 180), fill = 0)
-    draw.line((50, 130, 10, 180), fill = 0)
-    draw.arc((90, 190, 150, 250), 0, 360, fill = 0)
-    draw.chord((90, 120, 150, 180), 0, 360, fill = 0)
-    draw.rectangle((10, 200, 50, 250), fill = 0)
+    image = Image.new('1', (epd2in7b.EPD_WIDTH, epd2in7b.EPD_HEIGHT), 0)    # 255: clear the image with white
+    # draw = ImageDraw.Draw(image)
+    # font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 18)
+    # draw.text((20, 50), 'e-Paper demo', font = font, fill = 0)
+    # draw.rectangle((0, 76, 176, 96), fill = 0)
+    # draw.text((18, 80), 'Hello world!', font = font, fill = 255)
+    # draw.line((10, 130, 10, 180), fill = 0)
+    # draw.line((10, 130, 50, 130), fill = 0)
+    # draw.line((50, 130, 50, 180), fill = 0)
+    # draw.line((10, 180, 50, 180), fill = 0)
+    # draw.line((10, 130, 50, 180), fill = 0)
+    # draw.line((50, 130, 10, 180), fill = 0)
+    # draw.arc((90, 190, 150, 250), 0, 360, fill = 0)
+    # draw.chord((90, 120, 150, 180), 0, 360, fill = 0)
+    # draw.rectangle((10, 200, 50, 250), fill = 0)
 
     epd.display_frame(epd.get_frame_buffer(image))
 
