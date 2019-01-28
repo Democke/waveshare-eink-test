@@ -1,9 +1,9 @@
 ##
  #  @filename   :   main.cpp
- #  @brief      :   7.5inch e-paper display demo
+ #  @brief      :   2.7inch e-paper display demo
  #  @author     :   Yehui from Waveshare
  #
- #  Copyright (C) Waveshare     July 28 2017
+ #  Copyright (C) Waveshare     August 16 2017
  #
  # Permission is hereby granted, free of charge, to any person obtaining a copy
  # of this software and associated documnetation files (the "Software"), to deal
@@ -24,40 +24,37 @@
  # THE SOFTWARE.
  ##
 
-import epd2in7b
+import epd2in7
 import Image
-import ImageDraw
 import ImageFont
-#import imagedata
-
-EPD_WIDTH = 264
-EPD_HEIGHT = 176
+import ImageDraw
 
 def main():
-    epd = epd2in7b.EPD()
+    epd = epd2in7.EPD()
     epd.init()
 
     # For simplicity, the arguments are explicit numerical coordinates
-    image = Image.new('L', (EPD_WIDTH, EPD_HEIGHT), 255)    # 255: clear the frame
+    image = Image.new('1', (epd2in7.EPD_WIDTH, epd2in7.EPD_HEIGHT), 255)    # 255: clear the image with white
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 24)
-    draw.rectangle((0, 6, 276, 40), fill = 127)
-    # draw.text((200, 10), 'e-Paper demo', font = font, fill = 255)
-    # draw.rectangle((200, 80, 72, 280), fill = 127)
-    # draw.chord((240, 120, 580, 220), 0, 360, fill = 255)
-    # draw.rectangle((20, 80, 160, 280), fill = 0)
-    # draw.chord((40, 80, 180, 220), 0, 360, fill = 127)
+    font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 18)
+    draw.text((20, 50), 'e-Paper demo', font = font, fill = 0)
+    draw.rectangle((0, 76, 176, 96), fill = 0)
+    draw.text((18, 80), 'Hello world!', font = font, fill = 255)
+    draw.line((10, 130, 10, 180), fill = 0)
+    draw.line((10, 130, 50, 130), fill = 0)
+    draw.line((50, 130, 50, 180), fill = 0)
+    draw.line((10, 180, 50, 180), fill = 0)
+    draw.line((10, 130, 50, 180), fill = 0)
+    draw.line((50, 130, 10, 180), fill = 0)
+    draw.arc((90, 190, 150, 250), 0, 360, fill = 0)
+    draw.chord((90, 120, 150, 180), 0, 360, fill = 0)
+    draw.rectangle((10, 200, 50, 250), fill = 0)
+
     epd.display_frame(epd.get_frame_buffer(image))
 
-
-    image = Image.new('L', (EPD_WIDTH, EPD_HEIGHT), 255)    # 255: clear the frame
-    epd.display_frame(epd.get_frame_buffer(image))
-
-
-    # epd.display_frame(epd.get_frame_buffer(image))
-
-    # You can get frame buffer from an image or import the buffer directly:
-    #epd.display_frame(imagedata.MONOCOLOR_BITMAP)
+    # display images
+    epd.display_frame(epd.get_frame_buffer(Image.open('monocolor.bmp')))
 
 if __name__ == '__main__':
     main()
+
