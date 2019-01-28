@@ -53,7 +53,9 @@ def main():
     epd.display_frame(epd.get_frame_buffer(image))
 
     # display images
-    epd.display_frame(epd.get_frame_buffer(Image.open('monocolor.bmp')))
+
+    image = Image.new('1', (epd2in7b.EPD_WIDTH, epd2in7b.EPD_HEIGHT), 255)    # 255: clear the image with white
+    epd.display_frame(epd.get_frame_buffer(image))
 
 if __name__ == '__main__':
     main()
