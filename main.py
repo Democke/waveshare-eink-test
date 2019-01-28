@@ -34,7 +34,7 @@ def main():
     epd.init()
 
     # For simplicity, the arguments are explicit numerical coordinates
-    image = Image.new('1', (epd2in7b.EPD_WIDTH, epd2in7b.EPD_HEIGHT), 0)    # 255: clear the image with white
+    image = Image.new('1', (epd2in7b.EPD_WIDTH, epd2in7b.EPD_HEIGHT), 255)    # 255: clear the image with white
     # draw = ImageDraw.Draw(image)
     # font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 18)
     # draw.text((20, 50), 'e-Paper demo', font = font, fill = 0)
@@ -53,9 +53,9 @@ def main():
     epd.display_frame(epd.get_frame_buffer(image))
 
     # display images
-
-    image = Image.new('1', (epd2in7b.EPD_WIDTH, epd2in7b.EPD_HEIGHT), 255)    # 255: clear the image with white
-    epd.display_frame(epd.get_frame_buffer(image))
+    for _ in range(10):
+        image = Image.new('1', (epd2in7b.EPD_WIDTH, epd2in7b.EPD_HEIGHT), 255)    # 255: clear the image with white
+        epd.display_frame(epd.get_frame_buffer(image))
 
 if __name__ == '__main__':
     main()
