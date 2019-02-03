@@ -26,6 +26,7 @@
 
 import epd2in7b
 import Image
+import time
 import ImageFont
 import ImageDraw
 
@@ -35,11 +36,11 @@ def main():
 
     # For simplicity, the arguments are explicit numerical coordinates
     image = Image.new('1', (epd2in7b.EPD_WIDTH, epd2in7b.EPD_HEIGHT), 255)    # 255: clear the image with white
-    # draw = ImageDraw.Draw(image)
-    # font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 18)
-    # draw.text((20, 50), 'e-Paper demo', font = font, fill = 0)
-    # draw.rectangle((0, 76, 176, 96), fill = 0)
-    # draw.text((18, 80), 'Hello world!', font = font, fill = 255)
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 18)
+    draw.text((20, 50), 'e-Paper demo', font = font, fill = 0)
+    draw.rectangle((0, 76, 176, 96), fill = 0)
+    draw.text((18, 80), 'Hello world!', font = font, fill = 255)
     # draw.line((10, 130, 10, 180), fill = 0)
     # draw.line((10, 130, 50, 130), fill = 0)
     # draw.line((50, 130, 50, 180), fill = 0)
@@ -51,11 +52,11 @@ def main():
     # draw.rectangle((10, 200, 50, 250), fill = 0)
 
     epd.display_frame(epd.get_frame_buffer(image))
-
+    time.sleep()
     # display images
-    for _ in range(10):
-        image = Image.new('1', (epd2in7b.EPD_WIDTH, epd2in7b.EPD_HEIGHT), 255)    # 255: clear the image with white
-        epd.display_frame(epd.get_frame_buffer(image))
+    # for _ in range(10):
+    image = Image.new('1', (epd2in7b.EPD_WIDTH, epd2in7b.EPD_HEIGHT), 255)    # 255: clear the image with white
+    epd.display_frame(epd.get_frame_buffer(image))
 
 if __name__ == '__main__':
     main()
