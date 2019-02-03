@@ -52,7 +52,7 @@ def main():
     # draw.rectangle((10, 200, 50, 250), fill = 0)
 
     epd.display_frame(epd.get_frame_buffer(image))
-    time.sleep(1000)
+    time.sleep(10)
     # display images
     # for _ in range(10):
     image = Image.new('1', (epd2in7b.EPD_WIDTH, epd2in7b.EPD_HEIGHT), 255)    # 255: clear the image with white
